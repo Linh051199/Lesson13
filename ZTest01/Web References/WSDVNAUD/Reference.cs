@@ -27,8 +27,9 @@ namespace ZTest01.WSDVNAUD {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="WSSoap", Namespace="http://tempuri.org/")]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(object[]))]
     public partial class WS : System.Web.Services.Protocols.SoapHttpClientProtocol {
+        
+        private System.Threading.SendOrPostCallback Aud_CampaignDBReceive_SaveOperationCompleted;
         
         private System.Threading.SendOrPostCallback Cm_ReinitOperationCompleted;
         
@@ -184,13 +185,15 @@ namespace ZTest01.WSDVNAUD {
         
         private System.Threading.SendOrPostCallback Mst_CampainCriteria_SaveOperationCompleted;
         
+        private System.Threading.SendOrPostCallback Mst_CampainCriteriaScope_GetOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Aud_Campaign_SaveOperationCompleted;
         
         private System.Threading.SendOrPostCallback Aud_Campaign_ApproveOperationCompleted;
         
         private System.Threading.SendOrPostCallback Aud_Campaign_CancelOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Aud_CampaignDBReceive_SaveOperationCompleted;
+        private System.Threading.SendOrPostCallback Aud_Campaign_GetOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -229,6 +232,9 @@ namespace ZTest01.WSDVNAUD {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event Aud_CampaignDBReceive_SaveCompletedEventHandler Aud_CampaignDBReceive_SaveCompleted;
         
         /// <remarks/>
         public event Cm_ReinitCompletedEventHandler Cm_ReinitCompleted;
@@ -462,6 +468,9 @@ namespace ZTest01.WSDVNAUD {
         public event Mst_CampainCriteria_SaveCompletedEventHandler Mst_CampainCriteria_SaveCompleted;
         
         /// <remarks/>
+        public event Mst_CampainCriteriaScope_GetCompletedEventHandler Mst_CampainCriteriaScope_GetCompleted;
+        
+        /// <remarks/>
         public event Aud_Campaign_SaveCompletedEventHandler Aud_Campaign_SaveCompleted;
         
         /// <remarks/>
@@ -471,7 +480,50 @@ namespace ZTest01.WSDVNAUD {
         public event Aud_Campaign_CancelCompletedEventHandler Aud_Campaign_CancelCompleted;
         
         /// <remarks/>
-        public event Aud_CampaignDBReceive_SaveCompletedEventHandler Aud_CampaignDBReceive_SaveCompleted;
+        public event Aud_Campaign_GetCompletedEventHandler Aud_Campaign_GetCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Aud_CampaignDBReceive_Save", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public object[] Aud_CampaignDBReceive_Save(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, object objFlagIsDelete, object objDBReceiveNo, object objCampaignCode, object[] arrobjDSData) {
+            object[] results = this.Invoke("Aud_CampaignDBReceive_Save", new object[] {
+                        strGwUserCode,
+                        strGwPassword,
+                        strTid,
+                        strSessionId,
+                        objFlagIsDelete,
+                        objDBReceiveNo,
+                        objCampaignCode,
+                        arrobjDSData});
+            return ((object[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Aud_CampaignDBReceive_SaveAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, object objFlagIsDelete, object objDBReceiveNo, object objCampaignCode, object[] arrobjDSData) {
+            this.Aud_CampaignDBReceive_SaveAsync(strGwUserCode, strGwPassword, strTid, strSessionId, objFlagIsDelete, objDBReceiveNo, objCampaignCode, arrobjDSData, null);
+        }
+        
+        /// <remarks/>
+        public void Aud_CampaignDBReceive_SaveAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, object objFlagIsDelete, object objDBReceiveNo, object objCampaignCode, object[] arrobjDSData, object userState) {
+            if ((this.Aud_CampaignDBReceive_SaveOperationCompleted == null)) {
+                this.Aud_CampaignDBReceive_SaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAud_CampaignDBReceive_SaveOperationCompleted);
+            }
+            this.InvokeAsync("Aud_CampaignDBReceive_Save", new object[] {
+                        strGwUserCode,
+                        strGwPassword,
+                        strTid,
+                        strSessionId,
+                        objFlagIsDelete,
+                        objDBReceiveNo,
+                        objCampaignCode,
+                        arrobjDSData}, this.Aud_CampaignDBReceive_SaveOperationCompleted, userState);
+        }
+        
+        private void OnAud_CampaignDBReceive_SaveOperationCompleted(object arg) {
+            if ((this.Aud_CampaignDBReceive_SaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Aud_CampaignDBReceive_SaveCompleted(this, new Aud_CampaignDBReceive_SaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Cm_Reinit", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -3860,7 +3912,7 @@ namespace ZTest01.WSDVNAUD {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Mst_CampainCriteria_Get", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public object[] Mst_CampainCriteria_Get(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteria) {
+        public object[] Mst_CampainCriteria_Get(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteria, string strRt_Cols_Mst_CampainCriteriaScope) {
             object[] results = this.Invoke("Mst_CampainCriteria_Get", new object[] {
                         strGwUserCode,
                         strGwPassword,
@@ -3869,17 +3921,18 @@ namespace ZTest01.WSDVNAUD {
                         strFt_RecordStart,
                         strFt_RecordCount,
                         strFt_WhereClause,
-                        strRt_Cols_Mst_CampainCriteria});
+                        strRt_Cols_Mst_CampainCriteria,
+                        strRt_Cols_Mst_CampainCriteriaScope});
             return ((object[])(results[0]));
         }
         
         /// <remarks/>
-        public void Mst_CampainCriteria_GetAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteria) {
-            this.Mst_CampainCriteria_GetAsync(strGwUserCode, strGwPassword, strTid, strSessionId, strFt_RecordStart, strFt_RecordCount, strFt_WhereClause, strRt_Cols_Mst_CampainCriteria, null);
+        public void Mst_CampainCriteria_GetAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteria, string strRt_Cols_Mst_CampainCriteriaScope) {
+            this.Mst_CampainCriteria_GetAsync(strGwUserCode, strGwPassword, strTid, strSessionId, strFt_RecordStart, strFt_RecordCount, strFt_WhereClause, strRt_Cols_Mst_CampainCriteria, strRt_Cols_Mst_CampainCriteriaScope, null);
         }
         
         /// <remarks/>
-        public void Mst_CampainCriteria_GetAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteria, object userState) {
+        public void Mst_CampainCriteria_GetAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteria, string strRt_Cols_Mst_CampainCriteriaScope, object userState) {
             if ((this.Mst_CampainCriteria_GetOperationCompleted == null)) {
                 this.Mst_CampainCriteria_GetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnMst_CampainCriteria_GetOperationCompleted);
             }
@@ -3891,7 +3944,8 @@ namespace ZTest01.WSDVNAUD {
                         strFt_RecordStart,
                         strFt_RecordCount,
                         strFt_WhereClause,
-                        strRt_Cols_Mst_CampainCriteria}, this.Mst_CampainCriteria_GetOperationCompleted, userState);
+                        strRt_Cols_Mst_CampainCriteria,
+                        strRt_Cols_Mst_CampainCriteriaScope}, this.Mst_CampainCriteria_GetOperationCompleted, userState);
         }
         
         private void OnMst_CampainCriteria_GetOperationCompleted(object arg) {
@@ -4029,6 +4083,55 @@ namespace ZTest01.WSDVNAUD {
             if ((this.Mst_CampainCriteria_SaveCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Mst_CampainCriteria_SaveCompleted(this, new Mst_CampainCriteria_SaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Mst_CampainCriteriaScope_Get", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public object[] Mst_CampainCriteriaScope_Get(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteriaScope, string strRt_Cols_Mst_CampainExhibitedPOSM, string strRt_Cols_Mst_CampainCriteriaAward, string strRt_Cols_Mst_CampainCriteriaAwardDtl) {
+            object[] results = this.Invoke("Mst_CampainCriteriaScope_Get", new object[] {
+                        strGwUserCode,
+                        strGwPassword,
+                        strTid,
+                        strSessionId,
+                        strFt_RecordStart,
+                        strFt_RecordCount,
+                        strFt_WhereClause,
+                        strRt_Cols_Mst_CampainCriteriaScope,
+                        strRt_Cols_Mst_CampainExhibitedPOSM,
+                        strRt_Cols_Mst_CampainCriteriaAward,
+                        strRt_Cols_Mst_CampainCriteriaAwardDtl});
+            return ((object[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Mst_CampainCriteriaScope_GetAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteriaScope, string strRt_Cols_Mst_CampainExhibitedPOSM, string strRt_Cols_Mst_CampainCriteriaAward, string strRt_Cols_Mst_CampainCriteriaAwardDtl) {
+            this.Mst_CampainCriteriaScope_GetAsync(strGwUserCode, strGwPassword, strTid, strSessionId, strFt_RecordStart, strFt_RecordCount, strFt_WhereClause, strRt_Cols_Mst_CampainCriteriaScope, strRt_Cols_Mst_CampainExhibitedPOSM, strRt_Cols_Mst_CampainCriteriaAward, strRt_Cols_Mst_CampainCriteriaAwardDtl, null);
+        }
+        
+        /// <remarks/>
+        public void Mst_CampainCriteriaScope_GetAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Mst_CampainCriteriaScope, string strRt_Cols_Mst_CampainExhibitedPOSM, string strRt_Cols_Mst_CampainCriteriaAward, string strRt_Cols_Mst_CampainCriteriaAwardDtl, object userState) {
+            if ((this.Mst_CampainCriteriaScope_GetOperationCompleted == null)) {
+                this.Mst_CampainCriteriaScope_GetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnMst_CampainCriteriaScope_GetOperationCompleted);
+            }
+            this.InvokeAsync("Mst_CampainCriteriaScope_Get", new object[] {
+                        strGwUserCode,
+                        strGwPassword,
+                        strTid,
+                        strSessionId,
+                        strFt_RecordStart,
+                        strFt_RecordCount,
+                        strFt_WhereClause,
+                        strRt_Cols_Mst_CampainCriteriaScope,
+                        strRt_Cols_Mst_CampainExhibitedPOSM,
+                        strRt_Cols_Mst_CampainCriteriaAward,
+                        strRt_Cols_Mst_CampainCriteriaAwardDtl}, this.Mst_CampainCriteriaScope_GetOperationCompleted, userState);
+        }
+        
+        private void OnMst_CampainCriteriaScope_GetOperationCompleted(object arg) {
+            if ((this.Mst_CampainCriteriaScope_GetCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Mst_CampainCriteriaScope_GetCompleted(this, new Mst_CampainCriteriaScope_GetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4224,45 +4327,49 @@ namespace ZTest01.WSDVNAUD {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Aud_CampaignDBReceive_Save", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public object[] Aud_CampaignDBReceive_Save(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, object objFlagIsDelete, object objDBReceiveNo, object objCampaignCode, object[] arrobjDSData) {
-            object[] results = this.Invoke("Aud_CampaignDBReceive_Save", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Aud_Campaign_Get", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public object[] Aud_Campaign_Get(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Aud_Campaign, string strRt_Cols_Aud_CampaignDoc, string strRt_Cols_Aud_CampaignDBPOSMDtl) {
+            object[] results = this.Invoke("Aud_Campaign_Get", new object[] {
                         strGwUserCode,
                         strGwPassword,
                         strTid,
                         strSessionId,
-                        objFlagIsDelete,
-                        objDBReceiveNo,
-                        objCampaignCode,
-                        arrobjDSData});
+                        strFt_RecordStart,
+                        strFt_RecordCount,
+                        strFt_WhereClause,
+                        strRt_Cols_Aud_Campaign,
+                        strRt_Cols_Aud_CampaignDoc,
+                        strRt_Cols_Aud_CampaignDBPOSMDtl});
             return ((object[])(results[0]));
         }
         
         /// <remarks/>
-        public void Aud_CampaignDBReceive_SaveAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, object objFlagIsDelete, object objDBReceiveNo, object objCampaignCode, object[] arrobjDSData) {
-            this.Aud_CampaignDBReceive_SaveAsync(strGwUserCode, strGwPassword, strTid, strSessionId, objFlagIsDelete, objDBReceiveNo, objCampaignCode, arrobjDSData, null);
+        public void Aud_Campaign_GetAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Aud_Campaign, string strRt_Cols_Aud_CampaignDoc, string strRt_Cols_Aud_CampaignDBPOSMDtl) {
+            this.Aud_Campaign_GetAsync(strGwUserCode, strGwPassword, strTid, strSessionId, strFt_RecordStart, strFt_RecordCount, strFt_WhereClause, strRt_Cols_Aud_Campaign, strRt_Cols_Aud_CampaignDoc, strRt_Cols_Aud_CampaignDBPOSMDtl, null);
         }
         
         /// <remarks/>
-        public void Aud_CampaignDBReceive_SaveAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, object objFlagIsDelete, object objDBReceiveNo, object objCampaignCode, object[] arrobjDSData, object userState) {
-            if ((this.Aud_CampaignDBReceive_SaveOperationCompleted == null)) {
-                this.Aud_CampaignDBReceive_SaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAud_CampaignDBReceive_SaveOperationCompleted);
+        public void Aud_Campaign_GetAsync(string strGwUserCode, string strGwPassword, string strTid, string strSessionId, string strFt_RecordStart, string strFt_RecordCount, string strFt_WhereClause, string strRt_Cols_Aud_Campaign, string strRt_Cols_Aud_CampaignDoc, string strRt_Cols_Aud_CampaignDBPOSMDtl, object userState) {
+            if ((this.Aud_Campaign_GetOperationCompleted == null)) {
+                this.Aud_Campaign_GetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAud_Campaign_GetOperationCompleted);
             }
-            this.InvokeAsync("Aud_CampaignDBReceive_Save", new object[] {
+            this.InvokeAsync("Aud_Campaign_Get", new object[] {
                         strGwUserCode,
                         strGwPassword,
                         strTid,
                         strSessionId,
-                        objFlagIsDelete,
-                        objDBReceiveNo,
-                        objCampaignCode,
-                        arrobjDSData}, this.Aud_CampaignDBReceive_SaveOperationCompleted, userState);
+                        strFt_RecordStart,
+                        strFt_RecordCount,
+                        strFt_WhereClause,
+                        strRt_Cols_Aud_Campaign,
+                        strRt_Cols_Aud_CampaignDoc,
+                        strRt_Cols_Aud_CampaignDBPOSMDtl}, this.Aud_Campaign_GetOperationCompleted, userState);
         }
         
-        private void OnAud_CampaignDBReceive_SaveOperationCompleted(object arg) {
-            if ((this.Aud_CampaignDBReceive_SaveCompleted != null)) {
+        private void OnAud_Campaign_GetOperationCompleted(object arg) {
+            if ((this.Aud_Campaign_GetCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Aud_CampaignDBReceive_SaveCompleted(this, new Aud_CampaignDBReceive_SaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Aud_Campaign_GetCompleted(this, new Aud_Campaign_GetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4282,6 +4389,32 @@ namespace ZTest01.WSDVNAUD {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void Aud_CampaignDBReceive_SaveCompletedEventHandler(object sender, Aud_CampaignDBReceive_SaveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Aud_CampaignDBReceive_SaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Aud_CampaignDBReceive_SaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public object[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object[])(this.results[0]));
+            }
         }
     }
     
@@ -6289,6 +6422,32 @@ namespace ZTest01.WSDVNAUD {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void Mst_CampainCriteriaScope_GetCompletedEventHandler(object sender, Mst_CampainCriteriaScope_GetCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Mst_CampainCriteriaScope_GetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Mst_CampainCriteriaScope_GetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public object[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void Aud_Campaign_SaveCompletedEventHandler(object sender, Aud_Campaign_SaveCompletedEventArgs e);
     
     /// <remarks/>
@@ -6367,17 +6526,17 @@ namespace ZTest01.WSDVNAUD {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    public delegate void Aud_CampaignDBReceive_SaveCompletedEventHandler(object sender, Aud_CampaignDBReceive_SaveCompletedEventArgs e);
+    public delegate void Aud_Campaign_GetCompletedEventHandler(object sender, Aud_Campaign_GetCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Aud_CampaignDBReceive_SaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Aud_Campaign_GetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Aud_CampaignDBReceive_SaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Aud_Campaign_GetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

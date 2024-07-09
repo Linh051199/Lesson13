@@ -945,8 +945,8 @@ namespace Demo.Lab.Errors
 		#endregion
 
 		#region // Mst_StarShopType:
-		public const string Mst_StarShopType_CheckDB_StarShopTypeNotFound = "ErrDemoLab.Mst_StarShopType_CheckDB_Mst_StarShopTypeNotFound"; //// //Mst_StarShopType_CheckDB_Mst_StarShopTypeNotFound
-		public const string Mst_StarShopType_CheckDB_StarShopTypeExist = "ErrDemoLab.Mst_StarShopType_CheckDB_Mst_StarShopTypeExist"; //// //Mst_StarShopType_CheckDB_Mst_StarShopTypeExist
+		public const string Mst_StarShopType_CheckDB_StarShopTypeNotFound = "ErrDemoLab.Mst_StarShopType_CheckDB_StarShopTypeNotFound"; //// //Mst_StarShopType_CheckDB_Mst_StarShopTypeNotFound
+		public const string Mst_StarShopType_CheckDB_StarShopTypeExist = "ErrDemoLab.Mst_StarShopType_CheckDB_StarShopTypeExist"; //// //Mst_StarShopType_CheckDB_Mst_StarShopTypeExist
 		public const string Mst_StarShopType_CheckDB_FlagActiveNotMatched = "ErrDemoLab.Mst_StarShopType_CheckDB_FlagActiveNotMatched"; //// //Mst_StarShopType_CheckDB_FlagActiveNotMatched
 
 		// Mst_StarShopType_Get
@@ -966,7 +966,6 @@ namespace Demo.Lab.Errors
 
 		// Mst_StarShopType_Delete:
 		public const string Mst_StarShopType_Delete = "ErrDemoLab.Mst_StarShopType_Delete"; //// Mã lỗi: Mst_StarShopType_Delete ////
-
 		#endregion
 
 		#region // Mst_CampainCriteria: 
@@ -1056,6 +1055,9 @@ namespace Demo.Lab.Errors
 		// Aud_Campaign_Cancel:
 		public const string Aud_Campaign_Cancel = "ErrDemoLab.Aud_Campaign_Cancel"; //// //Aud_Campaign_Cancel ////
 		public const string Aud_Campaign_Cancel_CampaignDBDtlNotFound = "ErrDemoLab.Aud_Campaign_Cancel_CampaignDBDtlNotFound"; //// //Aud_Campaign_Cancel_CampaignDBDtlNotFound ////
+
+		// Aud_Campaign_Get
+		public const string Aud_Campaign_Get = "ErrDemoLab.Aud_Campaign_Get"; //// //Aud_Campaign_Get
 		#endregion
 
 		#region // Aud_CampaignDoc:

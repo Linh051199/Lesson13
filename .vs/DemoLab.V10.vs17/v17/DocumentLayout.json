@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F7CBDB7D-E96B-4D0E-9CF7-214842D1A97A}|ZTest01\\ZTest01.csproj|d:\\be\\learn\\lesson4\\learnbe_idoc\\ztest01\\ztest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F7CBDB7D-E96B-4D0E-9CF7-214842D1A97A}|ZTest01\\ZTest01.csproj|D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\ztest01\\ztest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F7CBDB7D-E96B-4D0E-9CF7-214842D1A97A}|ZTest01\\ZTest01.csproj|solutionrelative:ztest01\\ztest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32F1302F-6A20-4628-8CC5-B69E5105B573}|Demo.Lab.WS\\Demo.Lab.WS.csproj|D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\demo.lab.ws\\ws.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32F1302F-6A20-4628-8CC5-B69E5105B573}|Demo.Lab.WS\\Demo.Lab.WS.csproj|solutionrelative:demo.lab.ws\\ws.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|d:\\be\\learn\\lesson4\\learnbe_idoc\\demo.lab.biz\\posm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|solutionrelative:demo.lab.biz\\posm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\demo.lab.biz\\audit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|solutionrelative:demo.lab.biz\\audit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58EAF0AE-7360-4C85-BC0A-B1128A30CC8B}|Demo.Lab.Constants\\Demo.Lab.Constants.csproj|D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\demo.lab.constants\\error.dvn.aud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{32F1302F-6A20-4628-8CC5-B69E5105B573}|Demo.Lab.WS\\Demo.Lab.WS.csproj|D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\demo.lab.ws\\ws.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32F1302F-6A20-4628-8CC5-B69E5105B573}|Demo.Lab.WS\\Demo.Lab.WS.csproj|solutionrelative:demo.lab.ws\\ws.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|d:\\be\\learn\\lesson4\\learnbe_idoc\\demo.lab.biz\\campaigncriteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|solutionrelative:demo.lab.biz\\campaigncriteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58EAF0AE-7360-4C85-BC0A-B1128A30CC8B}|Demo.Lab.Constants\\Demo.Lab.Constants.csproj|d:\\be\\learn\\lesson4\\learnbe_idoc\\demo.lab.constants\\error.dvn.aud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58EAF0AE-7360-4C85-BC0A-B1128A30CC8B}|Demo.Lab.Constants\\Demo.Lab.Constants.csproj|solutionrelative:demo.lab.constants\\error.dvn.aud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\demo.lab.biz\\starshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|solutionrelative:demo.lab.biz\\starshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\demo.lab.biz\\posm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8475334-089A-460F-9B70-2E6855F21223}|Demo.Lab.Biz\\Demo.Lab.Biz.csproj|solutionrelative:demo.lab.biz\\posm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BE\\Learn\\lesson7\\20180720.InvF_AccessoryIn_Save (2).cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -33,8 +41,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 390,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{2fac1ebf-6b37-4be3-9a44-f9ed32d561cd}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{5a4e9529-b6a0-46b5-be4f-0f0b239bc0eb}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -43,7 +59,7 @@
               "RelativeDocumentMoniker": "ZTest01\\ZTest.cs",
               "ToolTip": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\ZTest01\\ZTest.cs",
               "RelativeToolTip": "ZTest01\\ZTest.cs",
-              "ViewState": "AQIAAIsCAAAAAAAAAAAowCEDAAAvAAAA",
+              "ViewState": "AQIAABIEAAAAAAAAAAAWwC4EAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T06:46:38.858Z",
               "IsPinned": true,
@@ -51,13 +67,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "WS.asmx.cs",
               "DocumentMoniker": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.WS\\WS.asmx.cs",
               "RelativeDocumentMoniker": "Demo.Lab.WS\\WS.asmx.cs",
               "ToolTip": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.WS\\WS.asmx.cs",
               "RelativeToolTip": "Demo.Lab.WS\\WS.asmx.cs",
-              "ViewState": "AQIAAEQMAAAAAAAAAAAwwMoMAAAcAAAA",
+              "ViewState": "AQIAAJkUAAAAAAAAAAD4vwcVAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T06:37:54.856Z",
               "IsPinned": true,
@@ -65,13 +81,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Audit.cs",
               "DocumentMoniker": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Biz\\Audit.cs",
               "RelativeDocumentMoniker": "Demo.Lab.Biz\\Audit.cs",
               "ToolTip": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Biz\\Audit.cs",
               "RelativeToolTip": "Demo.Lab.Biz\\Audit.cs",
-              "ViewState": "AQIAAAAGAAAAAAAAAAAmwCYGAAAgAAAA",
+              "ViewState": "AQIAAKEAAAAAAAAAAAAWwKoAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-16T14:55:53.036Z",
               "IsPinned": true,
@@ -85,35 +101,53 @@
               "RelativeDocumentMoniker": "Demo.Lab.Constants\\Error.DVN.AUD.cs",
               "ToolTip": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Constants\\Error.DVN.AUD.cs",
               "RelativeToolTip": "Demo.Lab.Constants\\Error.DVN.AUD.cs",
-              "ViewState": "AQIAAOsDAAAAAAAAAAAiwDAEAACoAAAA",
+              "ViewState": "AQIAAAwEAAAAAAAAAAAcwCQEAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T04:34:33.446Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{2fac1ebf-6b37-4be3-9a44-f9ed32d561cd}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{5a4e9529-b6a0-46b5-be4f-0f0b239bc0eb}"
+              "WhenOpened": "2024-07-08T08:47:58.702Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "CampaignCriteria.cs",
+              "DocumentMoniker": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Biz\\CampaignCriteria.cs",
+              "RelativeDocumentMoniker": "Demo.Lab.Biz\\CampaignCriteria.cs",
+              "ToolTip": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Biz\\CampaignCriteria.cs",
+              "RelativeToolTip": "Demo.Lab.Biz\\CampaignCriteria.cs",
+              "ViewState": "AQIAAAcCAAAAAAAAAAAWwDsCAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T16:59:14.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StarShop.cs",
+              "DocumentMoniker": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Biz\\StarShop.cs",
+              "RelativeDocumentMoniker": "Demo.Lab.Biz\\StarShop.cs",
+              "ToolTip": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Biz\\StarShop.cs",
+              "RelativeToolTip": "Demo.Lab.Biz\\StarShop.cs",
+              "ViewState": "AQIAAMICAAAAAAAAAAAmwGwDAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T15:29:45.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "POSM.cs",
               "DocumentMoniker": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Biz\\POSM.cs",
               "RelativeDocumentMoniker": "Demo.Lab.Biz\\POSM.cs",
               "ToolTip": "D:\\BE\\Learn\\lesson4\\learnBE_iDoc\\Demo.Lab.Biz\\POSM.cs",
               "RelativeToolTip": "Demo.Lab.Biz\\POSM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0BAAADAAAA",
+              "ViewState": "AQIAAOYFAAAAAAAAAAAowPIFAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-30T16:14:23.664Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "20180720.InvF_AccessoryIn_Save (2).cs",
               "DocumentMoniker": "D:\\BE\\Learn\\lesson7\\20180720.InvF_AccessoryIn_Save (2).cs",
               "RelativeDocumentMoniker": "..\\..\\lesson7\\20180720.InvF_AccessoryIn_Save (2).cs",
