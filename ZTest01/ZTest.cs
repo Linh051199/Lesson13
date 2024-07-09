@@ -339,6 +339,39 @@ namespace ZTest01
 			}
 			#endregion
 
+			#region // Mst_StarShopHist_Create:
+			if (bTest)
+			{
+				string strTid = string.Format("{0}.{1}", DateTime.Now.ToString("yyyyMMdd.HHmmss"), nSeq++);
+				//// 
+				string strOLCode = "1";
+				string strSSGrpCode = "1";
+				string strSSBrandCode = "SSType Name 1";
+				string strEffDateStart = "2";
+
+				mdsResult = CmUtils.ConvertUtils.Array2DataSet(ws.Mst_StarShopHist_Create(
+					strGwUserCode           // strGwUserCode
+					, strGwPassword         // strGwPassword
+					, strTid                // strTid
+					, strSessionId          // strSessionId
+											////
+					, strOLCode				// objOLCode
+					, strSSGrpCode			// objSSGrpCode
+					, strSSBrandCode        // objSSBrandCode
+					, strEffDateStart       // objEffDateStart
+					));
+
+				if (CmUtils.CMyDataSet.HasError(mdsResult))
+				{
+					CommonForms.Utils.ProcessMyDS(mdsResult);
+				}
+
+				// Pause:
+				System.Threading.Thread.Sleep(10);
+			}
+			#endregion
+
+
 			#region // Mst_CampainCriteria_Save: 
 			if (bTest)
 			{
