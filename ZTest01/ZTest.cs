@@ -344,29 +344,111 @@ namespace ZTest01
 			{
 				string strTid = string.Format("{0}.{1}", DateTime.Now.ToString("yyyyMMdd.HHmmss"), nSeq++);
 				//// 
-				string strOLCode = "OLVN005.10";
-				string strSSGrpCode = "1";
-				string strSSBrandCode = "1";
-				string strEffDateStart = "2024-07-12";
 
-				mdsResult = CmUtils.ConvertUtils.Array2DataSet(ws.Mst_StarShopHist_Create(
-					strGwUserCode           // strGwUserCode
-					, strGwPassword         // strGwPassword
-					, strTid                // strTid
-					, strSessionId          // strSessionId
-											////
-					, strOLCode				// objOLCode
-					, strSSGrpCode			// objSSGrpCode
-					, strSSBrandCode        // objSSBrandCode
-					, strEffDateStart       // objEffDateStart
-					));
+				DataTable dt_Mst_StarShopHist = new DataTable("Mst_StarShopHist");
 
-				if (CmUtils.CMyDataSet.HasError(mdsResult))
+				dt_Mst_StarShopHist.Columns.Add("OLCode", typeof(object));
+				dt_Mst_StarShopHist.Columns.Add("SSGrpCode", typeof(object));
+				dt_Mst_StarShopHist.Columns.Add("SSBrandCode", typeof(object));
+				dt_Mst_StarShopHist.Columns.Add("EffDateStart", typeof(object));
+
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN001.1",
+					"1",
+					"1",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN001.10",
+					"4",
+					"2",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN002.1",
+					"2",
+					"2",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN002.10",
+					"4",
+					"2",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN003.1",
+					"3",
+					"3",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN003.10",
+					"4",
+					"4",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN004.1",
+					"4",
+					"4",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN004.10",
+					"1",
+					"1",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN005.1",
+					"4",
+					"1",
+					"2024-07-12"
+			
+					);
+				dt_Mst_StarShopHist.Rows.Add(
+					"OLVN005.10",
+					"4",
+					"2",
+					"2024-07-12"
+			
+					);
+
+				foreach (DataRow row in dt_Mst_StarShopHist.Rows)
 				{
-					CommonForms.Utils.ProcessMyDS(mdsResult);
-				}
+					object strOLCode = row["OLCode"];
+					object strSSGrpCode = row["SSGrpCode"];
+					object strSSBrandCode = row["SSBrandCode"];
+					object strEffDateStart = row["EffDateStart"];
 
-				// Pause:
+					mdsResult = CmUtils.ConvertUtils.Array2DataSet(ws.Mst_StarShopHist_Create(
+						strGwUserCode       // strGwUserCode
+						, strGwPassword     // strGwPassword
+						, strTid            // strTid
+						, strSessionId      // strSessionId
+											////
+						, strOLCode             // objOLCode
+						, strSSGrpCode          // objSSGrpCode
+						, strSSBrandCode        // objSSBrandCode
+						, strEffDateStart       // objEffDateStart
+						));
+
+					if (CmUtils.CMyDataSet.HasError(mdsResult))
+					{
+						CommonForms.Utils.ProcessMyDS(mdsResult);
+					}
+					// Pause:
+					System.Threading.Thread.Sleep(10);
+				}
 				System.Threading.Thread.Sleep(10);
 			}
 			#endregion
@@ -1115,7 +1197,7 @@ namespace ZTest01
 			#endregion
 
 			#region // Aud_CampaignOLDtl_Save: 
-			if (!bTest)
+			if (bTest)
 			{
 				////
 				object objFlagIsDelete = "0";

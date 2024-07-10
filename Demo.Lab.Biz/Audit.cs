@@ -2402,16 +2402,27 @@ namespace Demo.Lab.Biz
 							, out dtDB_Aud_CampaignDBPOSMDtl // dtDB_Aud_CampaignDBPOSMDtl
 							);
 						////
-					
+						DataTable dtDB_Mst_StarShopHist = null;
+
+						Mst_StarShopHist_CheckDB(
+							ref alParamsCoupleError // alParamsCoupleError
+							, drScan["OLCode"] // drScan["objOLCode"]
+							, "" // objSSGrpCode
+							, "" // objSSBrandCode
+							, TConst.Flag.Yes // strFlagExistToCheck
+							, out dtDB_Mst_StarShopHist // dtDB_Mst_StarShopHist
+							);
+						////
+
 
 						////
 						drScan["CampaignCode"] = strCampaignCode;
 						drScan["DBCode"] = dtDB_Aud_CampaignDBPOSMDtl.Rows[0]["DBCode"];
 						drScan["AuditUserCode"] = _cf.sinf.strUserCode;
-						drScan["CampaignCrCode"] = dtDB_Aud_Campaign.Rows[0]["CampaignCrCode"]; ;
-						drScan["SSGrpCode"] = dtimeSys.ToString("yyyy-MM-dd HH:mm:ss");
-						drScan["SSBrandCode"] = dtimeSys.ToString("yyyy-MM-dd HH:mm:ss");
-						drScan["CampaignOLStatusDtl"] = _cf.sinf.strUserCode;
+						drScan["CampaignCrCode"] = dtDB_Aud_Campaign.Rows[0]["CampaignCrCode"]; 
+						drScan["SSGrpCode"] = dtDB_Mst_StarShopHist.Rows[0]["SSGrpCode"];
+						drScan["SSBrandCode"] = dtDB_Mst_StarShopHist.Rows[0]["SSBrandCode"];
+						drScan["CampaignOLStatusDtl"] = TConst.Flag.Active;
 						drScan["LogLUDTime"] = dtimeSys.ToString("yyyy-MM-dd HH:mm:ss");
 						drScan["LogLUBy"] = _cf.sinf.strUserCode;
 						////
