@@ -2184,8 +2184,303 @@ namespace Demo.Lab.Biz
 		}
 		#endregion
 
-		#region MyRegion
+		#region // Aud_CampaignOLDtl:
+		private void Aud_CampaignOLDtl_CheckDB(
+			ref ArrayList alParamsCoupleError
+			, object objCampaignCode
+			, object objOLCode
+			, string strFlagExistToCheck
+			, string strStatusListToCheck
+			, out DataTable dtDB_Aud_CampaignOLDtl
+			)
+		{
+			// GetInfo:
+			string strSqlExec = CmUtils.StringUtils.Replace(@"
+					select top 1
+						t.*
+					from Aud_CampaignOLDtl t --//[mylock]
+					where (1=1)
+						and t.CampaignCode = @objCampaignCode
+						and t.OLCode = @objOLCode
+					;
+				");
+			dtDB_Aud_CampaignOLDtl = _cf.db.ExecQuery(
+				strSqlExec
+				, "@objCampaignCode", objCampaignCode
+				, "@objOLCode", objOLCode
+				).Tables[0];
+			dtDB_Aud_CampaignOLDtl.TableName = "Aud_CampaignOLDtl";
 
+			// strFlagExistToCheck
+			if (strFlagExistToCheck.Length > 0)
+			{
+				if (CmUtils.StringUtils.StringEqual(strFlagExistToCheck, TConst.Flag.Active) && dtDB_Aud_CampaignOLDtl.Rows.Count < 1)
+				{
+					alParamsCoupleError.AddRange(new object[]{
+						"Check.CampaignCode", objCampaignCode
+						, "Check.OLCode", objOLCode
+						});
+					throw CmUtils.CMyException.Raise(
+						TError.ErrDemoLab.Aud_CampaignOLDtl_CheckDB_CampaignOLDtlNotFound
+						, null
+						, alParamsCoupleError.ToArray()
+						);
+				}
+				if (CmUtils.StringUtils.StringEqual(strFlagExistToCheck, TConst.Flag.Inactive) && dtDB_Aud_CampaignOLDtl.Rows.Count > 0)
+				{
+					alParamsCoupleError.AddRange(new object[]{
+						"Check.CampaignCode", objCampaignCode
+						});
+					throw CmUtils.CMyException.Raise(
+						TError.ErrDemoLab.Aud_CampaignOLDtl_CheckDB_CampaignOLDtlExist
+						, null
+						, alParamsCoupleError.ToArray()
+						);
+				}
+			}
+
+			// strStatusListToCheck
+			if (strStatusListToCheck.Length > 0 && !strStatusListToCheck.Contains(Convert.ToString(dtDB_Aud_CampaignOLDtl.Rows[0]["CampaignOLStatusDtl"])))
+			{
+				alParamsCoupleError.AddRange(new object[]{
+					"Check.CampaignCode", objCampaignCode
+					, "Check.strStatusListToCheck", strStatusListToCheck
+					, "DB.CampaignOLStatusDtl", dtDB_Aud_CampaignOLDtl.Rows[0]["CampaignOLStatusDtl"]
+					});
+				throw CmUtils.CMyException.Raise(
+					TError.ErrDemoLab.Aud_CampaignOLDtl_CheckDB_CampaignOLStatusDtlNotMatched
+					, null
+					, alParamsCoupleError.ToArray()
+					);
+			}
+		}
+		public DataSet Aud_CampaignOLDtl_Save(
+			string strTid
+			, DataRow drSession
+			////
+			, object objFlagIsDelete
+			////
+			, object objCampaignCode
+			, object[] arrobjDSData
+			)
+		{
+			#region // Temp:
+			DataSet mdsFinal = CmUtils.CMyDataSet.NewMyDataSet(strTid);
+			//int nTidSeq = 0;
+			bool bMyDebugSql = false;
+			DateTime dtimeSys = DateTime.Now;
+			bool bNeedTransaction = true;
+			string strFunctionName = "Aud_Campaign_Save";
+			string strErrorCodeDefault = TError.ErrDemoLab.Aud_CampaignOLDtl_Save;
+			ArrayList alParamsCoupleError = new ArrayList(new object[]{
+					"strFunctionName", strFunctionName
+					, "dtimeSys", dtimeSys.ToString("yyyy-MM-dd HH:mm:ss")
+					////
+					, "objFlagIsDelete", objFlagIsDelete
+					////
+					, "objCampaignCode", objCampaignCode
+					});
+			//ArrayList alPCErrEx = new ArrayList();
+			#endregion
+
+			try
+			{
+				#region // Convert Input:
+				DataSet dsData = TUtils.CUtils.StdDS(arrobjDSData);
+				if (dsData == null) dsData = new DataSet("dsData");
+				dsData.AcceptChanges();
+				alParamsCoupleError.AddRange(new object[]{
+					"Check.dsData", CmUtils.XmlUtils.DataSet2XmlSimple(dsData)
+					});
+				#endregion
+
+				#region // Init:
+				_cf.db.LogUserId = _cf.sinf.strUserCode;
+				if (bNeedTransaction) _cf.db.BeginTransaction();
+
+				// Write RequestLog:
+				_cf.ProcessBizReq(
+					strTid // strTid
+					, strFunctionName // strFunctionName
+					, alParamsCoupleError // alParamsCoupleError
+					);
+
+				// Check Access/Deny:
+				Sys_Access_CheckDeny(
+					ref alParamsCoupleError
+					, strFunctionName
+					);
+				#endregion
+
+				#region //// Refine and Check Aud_Campaign:
+				////
+				bool bIsDelete = CmUtils.StringUtils.StringEqual(objFlagIsDelete, TConst.Flag.Yes);
+				////
+				string strCampaignCode = TUtils.CUtils.StdParam(objCampaignCode);
+
+				////
+				DataTable dtDB_Aud_Campaign = null;
+				{
+
+					Aud_Campaign_CheckDB(
+						ref alParamsCoupleError // alParamsCoupleError
+						, strCampaignCode // objCampaignCode
+						, TConst.Flag.Yes // strFlagExistToCheck
+						, TConst.CampaignStatus.Approve1 // strStatusListToCheck
+						, out dtDB_Aud_Campaign // dtDB_Aud_Campaign
+						);
+				}
+				#endregion
+
+				#region //// SaveTemp Aud_Campaign:
+				if (!bIsDelete)
+				{
+					TUtils.CUtils.MyBuildDBDT_Common(
+						_cf.db
+						, "#input_Aud_Campaign"
+						, new object[]{
+							"CampaignCode", TConst.BizMix.Default_DBColType,
+							}
+						, new object[]{
+							new object[]{
+								strCampaignCode, // strCampaignCode
+								}
+							}
+						);
+				}
+				#endregion
+
+				#region //// Refine and Check Aud_CampaignOLDtl:
+				DataTable dtInput_Aud_CampaignOLDtl = null;
+				if (!bIsDelete)
+				{
+					////
+					string strTableCheck = "Aud_CampaignOLDtl";
+					////
+					if (!dsData.Tables.Contains(strTableCheck))
+					{
+						alParamsCoupleError.AddRange(new object[]{
+							"Check.TableName", strTableCheck
+							});
+						throw CmUtils.CMyException.Raise(
+							TError.ErrDemoLab.Aud_CampaignDBReceive_Save_Input_CampaignDBReceiveTblNotFound
+							, null
+							, alParamsCoupleError.ToArray()
+							);
+					}
+					dtInput_Aud_CampaignOLDtl = dsData.Tables[strTableCheck];
+					////
+					TUtils.CUtils.StdDataInTable(
+						dtInput_Aud_CampaignOLDtl // dtData
+						, "StdParam", "OLCode" // arrstrCouple
+						, "", "LevelCode" // arrstrCouple
+						);
+					////
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "CampaignCode", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "DBCode", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "AuditUserCode", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "CampaignCrCode", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "SSGrpCode", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "SSBrandCode", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "CampaignOLStatusDtl", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "LogLUDTime", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "LogLUBy", typeof(object));
+					////
+					for (int nScan = 0; nScan < dtInput_Aud_CampaignOLDtl.Rows.Count; nScan++)
+					{
+						////
+						DataRow drScan = dtInput_Aud_CampaignOLDtl.Rows[nScan];
+
+						////
+						DataTable dtDB_Aud_CampaignDBPOSMDtl = null;
+
+						Mst_Outlet_CheckDB(
+							ref alParamsCoupleError // alParamsCoupleError
+							, drScan["OLCode"] // drScan["objOLCode"]
+							, TConst.Flag.Yes // strFlagExistToCheck
+							, TConst.Flag.Active // strFlagActiveListToCheck
+							, out dtDB_Aud_CampaignDBPOSMDtl // dtDB_Aud_CampaignDBPOSMDtl
+							);
+						////
+					
+
+						////
+						drScan["CampaignCode"] = strCampaignCode;
+						drScan["DBCode"] = dtDB_Aud_CampaignDBPOSMDtl.Rows[0]["DBCode"];
+						drScan["AuditUserCode"] = _cf.sinf.strUserCode;
+						drScan["CampaignCrCode"] = dtDB_Aud_Campaign.Rows[0]["CampaignCrCode"]; ;
+						drScan["SSGrpCode"] = dtimeSys.ToString("yyyy-MM-dd HH:mm:ss");
+						drScan["SSBrandCode"] = dtimeSys.ToString("yyyy-MM-dd HH:mm:ss");
+						drScan["CampaignOLStatusDtl"] = _cf.sinf.strUserCode;
+						drScan["LogLUDTime"] = dtimeSys.ToString("yyyy-MM-dd HH:mm:ss");
+						drScan["LogLUBy"] = _cf.sinf.strUserCode;
+						////
+					}
+				}
+				#endregion
+
+				#region //// SaveTemp Aud_CampaignDBReceive:
+				if (!bIsDelete)
+				{
+					TUtils.CUtils.MyBuildDBDT_Common(
+						_cf.db
+						, "#input_Aud_CampaignDBReceive"
+						, new object[]{
+							"DBReceiveNo", TConst.BizMix.Default_DBColType,
+							"CampaignCode", TConst.BizMix.Default_DBColType,
+							"DBCode", TConst.BizMix.Default_DBColType,
+							"POSMCode", TConst.BizMix.Default_DBColType,
+							"QtyDBRec", "float",
+							"DateDBReceive", TConst.BizMix.Default_DBColType,
+							"CreateDTime", TConst.BizMix.Default_DBColType,
+							"CreateBy", TConst.BizMix.Default_DBColType,
+							"LogLUDTime", TConst.BizMix.Default_DBColType,
+							"LogLUBy", TConst.BizMix.Default_DBColType,
+							}
+						, dtInput_Aud_CampaignOLDtl
+						);
+				}
+			#endregion
+
+
+			// Return Good:
+			MyCodeLabel_Done:
+				TDALUtils.DBUtils.CommitSafety(_cf.db);
+				mdsFinal.AcceptChanges();
+				return mdsFinal;
+			}
+			catch (Exception exc)
+			{
+				#region // Catch of try:
+				// Rollback:
+				TDALUtils.DBUtils.RollbackSafety(_cf.db);
+
+				// Return Bad:
+				//alParamsCoupleError.AddRange(alPCErrEx);
+				return TUtils.CProcessExc.Process(
+					ref mdsFinal
+					, exc
+					, strErrorCodeDefault
+					, alParamsCoupleError.ToArray()
+					);
+				#endregion
+			}
+			finally
+			{
+				#region // Finally of try:
+				// Rollback and Release resources:
+				TDALUtils.DBUtils.RollbackSafety(_cf.db);
+				TDALUtils.DBUtils.ReleaseAllSemaphore(_cf.db_Sys, true);
+
+				// Write ReturnLog:
+				_cf.ProcessBizReturn(
+					ref mdsFinal // mdsFinal
+					, strTid // strTid
+					, strFunctionName // strFunctionName
+					);
+				#endregion
+			}
+		}
 		#endregion
 
 	}

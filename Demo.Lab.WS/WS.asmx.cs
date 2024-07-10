@@ -5534,5 +5534,74 @@ namespace Demo.Lab.WS
 
 		#endregion
 
+		#region // Aud_CampaignOLDtl:
+		[WebMethod]
+		public object[] Aud_CampaignOLDtl_Save(
+			string strGwUserCode
+			, string strGwPassword
+			, string strTid
+			, string strSessionId
+			////
+			, object objFlagIsDelete
+			////
+			, object objCampaignCode
+			, object[] arrobjDSData
+			)
+		{
+			// Temp:
+			string strFunctionName = "Aud_CampaignOLDtl_Save";
+
+			#region // Check:
+			// Check Init:
+			if (_mdsInitError != null) return WSReturn(_mdsInitError);
+			string strErrorCodeDefault = TError.ErrDemoLab.CmSys_SessionPreInitFailed;
+			DataSet mdsFinal = CmUtils.CMyDataSet.NewMyDataSet(strTid);
+			ArrayList alParamsCoupleError = new ArrayList(new object[]{
+				"strFunctionName", strFunctionName
+				});
+			DataRow drSession = null;
+
+			try
+			{
+				// Check all:
+				TUtils.CConnectionManager.CheckAllCondition(
+					_biz._cf.nvcParams // nvcParams
+					, _biz._cf.sess // ss
+					, ref alParamsCoupleError // alParamsCoupleError
+					, strGwUserCode // strGwUserCode
+					, strGwPassword // strGwPassword
+					, strSessionId // strSessionId
+					, out drSession // drSession
+					);
+
+				// Init SessionInfo:
+				_biz._cf.sinf = new TBiz.CSessionInfo(drSession);
+			}
+			catch (Exception exc)
+			{
+				return WSReturn(TUtils.CProcessExc.Process(
+					ref mdsFinal // mdsFinal
+					, exc // exc
+					, strErrorCodeDefault // strErrorCode
+					, alParamsCoupleError.ToArray() // arrobjErrorParams
+					));
+			}
+			#endregion
+
+			// Return Good:
+			return WSReturn(_biz.Aud_CampaignOLDtl_Save(
+			strTid
+			, drSession
+			//// 
+			, objFlagIsDelete
+			////
+			, objCampaignCode
+			, arrobjDSData
+			));
+		}
+
+		#endregion
+
+
 	}
 }

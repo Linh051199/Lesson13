@@ -344,10 +344,10 @@ namespace ZTest01
 			{
 				string strTid = string.Format("{0}.{1}", DateTime.Now.ToString("yyyyMMdd.HHmmss"), nSeq++);
 				//// 
-				string strOLCode = "1";
+				string strOLCode = "OLVN005.10";
 				string strSSGrpCode = "1";
-				string strSSBrandCode = "SSType Name 1";
-				string strEffDateStart = "2";
+				string strSSBrandCode = "1";
+				string strEffDateStart = "2024-07-12";
 
 				mdsResult = CmUtils.ConvertUtils.Array2DataSet(ws.Mst_StarShopHist_Create(
 					strGwUserCode           // strGwUserCode
@@ -370,7 +370,6 @@ namespace ZTest01
 				System.Threading.Thread.Sleep(10);
 			}
 			#endregion
-
 
 			#region // Mst_CampainCriteria_Save: 
 			if (bTest)
@@ -585,7 +584,7 @@ namespace ZTest01
 			{
 				////
 				object objFlagIsDelete = "0";
-				object objCampaignCode = "AC20220912.555555"; 
+				object objCampaignCode = "AC20220912.123123"; 
 				object objCampaignName = "1000OL";
 				object objEffDTimeStart = "2014-06-25";
 				object objEffDTimeEnd = "2014-07-08";
@@ -687,7 +686,7 @@ namespace ZTest01
 			if (bTest)
 			{
 				////
-				object objCampaignCode = "AC20220912.555555"; 
+				object objCampaignCode = "AC20220912.123123"; 
 				object objRemark = "LinhPham";
 
 				 
@@ -1009,7 +1008,7 @@ namespace ZTest01
 			#endregion
 
 			#region // Mst_CampainCriteria_Get:
-			if (!bTest)
+			if (bTest)
 			{
 				string strFt_WhereClause = "Mst_CampainCriteria.CampaignCrCode = '20140623.153829' and Mst_CampainCriteria.CampainCriteriaType = 'POSM' and Mst_CampainCriteria.CreateDTime <= '2024-05-15 23:59:59' and Mst_CampainCriteria.CreateDTime >= '2024-05-15 00:00:00'";
 				mdsResult = CmUtils.ConvertUtils.Array2DataSet(ws.Mst_CampainCriteria_Get(
@@ -1042,7 +1041,7 @@ namespace ZTest01
 			#endregion
 
 			#region // Mst_CampainCriteriaScope_Get:
-			if (!bTest)
+			if (bTest)
 			{
 
 
@@ -1079,7 +1078,7 @@ namespace ZTest01
 			#endregion
 
 			#region // Aud_Campaign_Get:
-			if (!bTest)
+			if (bTest)
 			{
 
 
@@ -1114,6 +1113,63 @@ namespace ZTest01
 				System.Threading.Thread.Sleep(10);
 			}
 			#endregion
+
+			#region // Aud_CampaignOLDtl_Save: 
+			if (!bTest)
+			{
+				////
+				object objFlagIsDelete = "0";
+				object objCampaignCode = "AC20220912.123123";
+
+				DataSet dsData = new DataSet();
+
+				////
+				DataTable dtData_Aud_CampaignOLDtl = new DataTable("Aud_CampaignOLDtl");
+				dtData_Aud_CampaignOLDtl.Columns.Add("OLCode", typeof(object));
+				dtData_Aud_CampaignOLDtl.Columns.Add("LevelCode", typeof(object));
+
+				////
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN001.1", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN001.10", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN002.1", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN002.10", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN003.1", "11");
+				// //
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN003.10", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN004.1", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN004.10", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN005.1", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN005.10", "11");
+				// //
+
+				dsData.Tables.Add(dtData_Aud_CampaignOLDtl);
+				object[] arrobjDSData = CmUtils.ConvertUtils.DataSet2Array(dsData);
+				mdsResult = CmUtils.ConvertUtils.Array2DataSet(ws.Aud_CampaignOLDtl_Save(
+					strGwUserCode // strGwUserCode
+					, strGwPassword // strGwPassword
+					, string.Format("{0}.{1}", DateTime.Now.ToString("yyyyMMdd.HHmmss"), nSeq++) // strTid
+					, strSessionId // strSessionId
+								   ////
+					, objFlagIsDelete
+					////
+					, objCampaignCode
+					, arrobjDSData
+					));
+
+				dtTable0 = mdsResult.Tables[0];
+				dtTable1 = mdsResult.Tables[1];
+				dtTable2 = mdsResult.Tables[2];
+
+				if (CmUtils.CMyDataSet.HasError(mdsResult))
+				{
+					CommonForms.Utils.ProcessMyDS(mdsResult);
+				}
+
+				// Pause:
+				System.Threading.Thread.Sleep(10);
+			}
+			#endregion
+
 
 
 			////
