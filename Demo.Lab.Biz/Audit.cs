@@ -2391,7 +2391,7 @@ namespace Demo.Lab.Biz
 				}
 				#endregion
 
-				#region //// Refine and Check Aud_CampaignOLPOSMDtl:
+				/*#region //// Refine and Check Aud_CampaignOLPOSMDtl:
 				DataTable dtInput_Aud_CampaignOLPOSMDtl = null;
 				if (!bIsDelete)
 				{
@@ -2541,7 +2541,7 @@ namespace Demo.Lab.Biz
 						, dtInput_Aud_CampaignOLPOSMDtl
 						);
 				}
-				#endregion
+				#endregion*/
 
 				#region //// Refine and Check Aud_CampaignOLDtl:
 				DataTable dtInput_Aud_CampaignOLDtl = null;
@@ -2563,6 +2563,8 @@ namespace Demo.Lab.Biz
 					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "SSGrpCode", typeof(object));
 					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "SSBrandCode", typeof(object));
 					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "CampaignOLStatusDtl", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "POSMCode", typeof(object));
+					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "QtyDeliver", typeof(object));
 					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "LogLUDTime", typeof(object));
 					TUtils.CUtils.MyForceNewColumn(ref dtInput_Aud_CampaignOLDtl, "LogLUBy", typeof(object));
 					////
@@ -2582,21 +2584,28 @@ namespace Demo.Lab.Biz
 							, out dtDB_Mst_Outlet // dtDB_Mst_Outlet
 							);
 						////
-						string strSqlCheck_Mst_StarShopHist = CmUtils.StringUtils.Replace(@"
-							select 
+						DataTable dtDB_Mst_Distributor = null;
 
-								t.*
-							from Mst_StarShopHist t --//[mylock]
-							where (1=1)
-								and t.OLCode = '@strOLCode'
-							;
-						"
-						, "@strOLCode", drScan["OLCode"]
-						);
-
-						DataTable dtDB_Check_Mst_StarShopHist = _cf.db.ExecQuery(strSqlCheck_Mst_StarShopHist).Tables[0];
+						Mst_Distributor_CheckDB(
+							ref alParamsCoupleError // alParamsCoupleError
+							, dtDB_Mst_Outlet.Rows[0]["DBCode"] // drScan["objDBCode"]
+							, TConst.Flag.Yes // strFlagExistToCheck
+							, TConst.Flag.Active // strFlagActiveListToCheck
+							, out dtDB_Mst_Distributor // dtDB_Mst_Distributor
+							);
 						////
-						/*DataTable dtDB_Sys_User = null;
+						DataTable dtDB_Aud_CampaignDBDtl = null;
+
+						Aud_CampaignDBDtl_CheckDB(
+							ref alParamsCoupleError // alParamsCoupleError
+							, strCampaignCode // objCampaignCode
+							, dtDB_Mst_Outlet.Rows[0]["DBCode"] // drScan["objDBCode"]
+							, TConst.Flag.Yes // strFlagExistToCheck
+							, TConst.Flag.Active // strFlagActiveListToCheck
+							, out dtDB_Aud_CampaignDBDtl // dtDB_Aud_CampaignDBDtl
+							);
+						////
+						DataTable dtDB_Sys_User = null;
 
 						Sys_User_CheckDB(
 							ref alParamsCoupleError // alParamsCoupleError
@@ -2605,18 +2614,48 @@ namespace Demo.Lab.Biz
 							, TConst.Flag.Active // strFlagActiveListToCheck
 							, out dtDB_Sys_User // dtDB_Sys_User
 							);
-						if (!CmUtils.StringUtils.StringEqualIgnoreCase(dtDB_Sys_User.Rows[0]["DBCode"], dtDB_Mst_Outlet.Rows[0]["DBCode"]))
+						// //
+
+						if (dtDB_Mst_Distributor.Rows[0]["DBCodeParent"] == dtDB_Mst_Outlet.Rows[0]["DBCode"] || dtDB_Sys_User.Rows[0]["DBCode"] == dtDB_Mst_Outlet.Rows[0]["DBCode"])
 						{
 							alParamsCoupleError.AddRange(new object[]{
 									"Check.DB.DBCode", dtDB_Sys_User.Rows[0]["DBCode"]
-									, "Check.DB.DBCode", dtDB_Mst_Outlet.Rows[0]["DBCode"]
+									, "Check.DB.DBCode", dtDB_Mst_Outlet.Rows[0]["DBCode"] 
 								});
 							throw CmUtils.CMyException.Raise(
 								TError.ErrDemoLab.Aud_CampaignOLDtl_Save_InvalidDBCode
 								, null
 								, alParamsCoupleError.ToArray()
 								);
-						}*/
+						}
+						////
+						string strSqlCheck_Mst_StarShopHist = CmUtils.StringUtils.Replace(@"
+								select 
+									t.*
+								from Mst_StarShopHist t --//[mylock]
+								where (1=1)
+									and t.OLCode = '@strOLCode'
+									and t.EffDateStart <= '@SysDate'
+									and t.EffDateEnd >= '@SysDate'
+								;
+							"
+							, "@strOLCode", drScan["OLCode"]
+							, "@SysDate", dtimeSys.AddDays(1).ToString("yyyy-MM-dd")
+							);
+
+						DataTable dtDB_Check_Mst_StarShopHist = _cf.db.ExecQuery(strSqlCheck_Mst_StarShopHist).Tables[0];
+						////
+						if (dtDB_Check_Mst_StarShopHist.Rows.Count < 1)
+						{
+							alParamsCoupleError.AddRange(new object[]{
+							"Check.OLCode", dtDB_Mst_Outlet.Rows[0]["DBCode"]
+							});
+							throw CmUtils.CMyException.Raise(
+								TError.ErrDemoLab.Aud_CampaignOLDtl_Save_InvalidDate
+								, null
+								, alParamsCoupleError.ToArray()
+								);
+						}
 						////
 						string strSqlCheck_Mst_CampainExhibitedPOSM = CmUtils.StringUtils.Replace(@"
 							select top 1
@@ -2649,6 +2688,18 @@ namespace Demo.Lab.Biz
 							, out dtDB_Mst_CampainExhibitedPOSM // dtDB_Mst_CampainExhibitedPOSM
 							);
 						////
+						DataTable dtDB_Aud_CampaignDBPOSMDtl = null;
+
+						Aud_CampaignDBPOSMDtl_CheckDB(
+							ref alParamsCoupleError // alParamsCoupleError
+							, strCampaignCode // objCampaignCode
+							, dtDB_Mst_Outlet.Rows[0]["DBCode"] // drScan["objDBCode"]
+							, dtDB_Check_Mst_CampainExhibitedPOSM.Rows[0]["POSMCode"] // drScan["POSMCode"]
+							, TConst.Flag.Yes // strFlagExistToCheck
+							, TConst.Flag.Active // strFlagActiveListToCheck
+							, out dtDB_Aud_CampaignDBPOSMDtl // dtDB_Aud_CampaignDBPOSMDtl
+							);
+						////
 
 						drScan["CampaignCode"] = strCampaignCode;
 						drScan["DBCode"] = dtDB_Mst_Outlet.Rows[0]["DBCode"];
@@ -2657,6 +2708,8 @@ namespace Demo.Lab.Biz
 						drScan["SSGrpCode"] = dtDB_Check_Mst_StarShopHist.Rows[0]["SSGrpCode"];
 						drScan["SSBrandCode"] = dtDB_Check_Mst_StarShopHist.Rows[0]["SSBrandCode"];
 						drScan["CampaignOLStatusDtl"] = TConst.Flag.Active;
+						drScan["POSMCode"] = dtDB_Check_Mst_CampainExhibitedPOSM.Rows[0]["POSMCode"];
+						drScan["QtyDeliver"] = dtDB_Check_Mst_CampainExhibitedPOSM.Rows[0]["QtyExh"];
 						drScan["LogLUDTime"] = dtimeSys.ToString("yyyy-MM-dd HH:mm:ss");
 						drScan["LogLUBy"] = _cf.sinf.strUserCode;
 						////
@@ -2684,6 +2737,32 @@ namespace Demo.Lab.Biz
 							"LogLUBy", TConst.BizMix.Default_DBColType,
 							}
 						, dtInput_Aud_CampaignOLDtl
+						);
+				}
+				#endregion
+
+				#region //// SaveTemp Aud_CampaignOLPOSMDtl:
+				if (!bIsDelete)
+				{
+					string strSqlSave = CmUtils.StringUtils.Replace(@"
+							select distinct
+								t.CampaignCode
+								, t.DBCode
+								, '@objCampaignDBStatusDtl' CampaignDBStatusDtl 
+								, t.LogLUDTime
+								, t.LogLUBy
+							into #input_Aud_CampaignOLPOSMDtl
+							from #input_Aud_CampaignOLDtl t with(nolock)
+							where (1=1)
+								and t.CampaignCode = '@objCampaignCode'
+							;
+						"
+						, "@objCampaignCode", strCampaignCode
+						, "@objCampaignDBStatusDtl", TConst.Flag.Active
+						);
+
+					_cf.db.ExecQuery(
+						strSqlSave
 						);
 				}
 				#endregion
