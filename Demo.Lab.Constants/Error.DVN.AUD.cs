@@ -833,7 +833,7 @@ namespace Demo.Lab.Errors
 		#region // Mst_POSMType: 
 		// Mst_POSMType_CheckDB:
 		public const string Mst_POSMType_CheckDB_POSMTypeNotFound = "ErrDemoLab.Mst_POSMType_CheckDB_POSMTypeNotFound"; //// //Mst_POSMType_CheckDB_POSMTypeNotFound
-		public const string Mst_POSMType_CheckDB_POSMTypeExist = "Mst_POSMType_CheckDB_POSMTypeExist"; //// //Mst_POSMType_CheckDB_POSMTypeExist
+		public const string Mst_POSMType_CheckDB_POSMTypeExist = "ErrDemoLab.Mst_POSMType_CheckDB_POSMTypeExist"; //// //Mst_POSMType_CheckDB_POSMTypeExist
 		public const string Mst_POSMType_CheckDB_FlagActiveNotMatched = "Mst_POSMType_CheckDB_FlagActiveNotMatched"; //// //Mst_POSMType_CheckDB_FlagActiveNotMatched
 
 		// Mst_POSMType_Get
@@ -971,8 +971,8 @@ namespace Demo.Lab.Errors
 		#region // Mst_CampainCriteria: 
 		// Mst_CampainCriteria_CheckDB:
 		public const string Mst_CampainCriteria_CheckDB_CampainCriteriaNotFound = "ErrDemoLab.Mst_CampainCriteria_CheckDB_CampainCriteriaNotFound"; //// //Mst_CampainCriteria_CheckDB_CampainCriteriaNotFound
-		public const string Mst_CampainCriteria_CheckDB_CampainCriteriaExist = "Mst_CampainCriteria_CheckDB_CampainCriteriaExist"; //// //Mst_CampainCriteria_CheckDB_CampainCriteriaExist
-		public const string Mst_CampainCriteria_CheckDB_FlagActiveNotMatched = "Mst_CampainCriteria_CheckDB_FlagActiveNotMatched"; //// //Mst_CampainCriteria_CheckDB_FlagActiveNotMatched
+		public const string Mst_CampainCriteria_CheckDB_CampainCriteriaExist = "ErrDemoLab.Mst_CampainCriteria_CheckDB_CampainCriteriaExist"; //// //Mst_CampainCriteria_CheckDB_CampainCriteriaExist
+		public const string Mst_CampainCriteria_CheckDB_FlagActiveNotMatched = "ErrDemoLab.Mst_CampainCriteria_CheckDB_FlagActiveNotMatched"; //// //Mst_CampainCriteria_CheckDB_FlagActiveNotMatched
 
 		// Mst_CampainCriteria_Get
 		public const string Mst_CampainCriteria_Get = "ErrDemoLab.Mst_CampainCriteria_Get"; //// //Mst_CampainCriteria_Get
@@ -1011,6 +1011,13 @@ namespace Demo.Lab.Errors
 		public const string Mst_CampainCriteriaScope_CheckDB_CampainCriteriaScopeExist = "ErrDemoLab.Mst_CampainCriteriaScope_CheckDB_CampainCriteriaScopeExist"; //// //Mst_CampainCriteriaScope_CheckDB_CampainCriteriaScopeExist
 		public const string Mst_CampainCriteriaScope_CheckDB_FlagActiveNotMatched = "ErrDemoLab.Mst_CampainCriteriaScope_CheckDB_FlagActiveNotMatched"; //// //Mst_CampainCriteriaScope_CheckDB_FlagActiveNotMatched
 		#endregion
+
+		#region // Mst_CampainExhibitedPOSM:
+		public const string Mst_CampainExhibitedPOSM_CheckDB_CampainExhibitedPOSMNotFound = "ErrDemoLab.Mst_CampainExhibitedPOSM_CheckDB_CampainExhibitedPOSMNotFound"; //// //Mst_CampainExhibitedPOSM_CheckDB_CampainExhibitedPOSMNotFound
+		public const string Mst_CampainExhibitedPOSM_CheckDB_CampainExhibitedPOSMExist = "ErrDemoLab.Mst_CampainExhibitedPOSM_CheckDB_CampainExhibitedPOSMExist"; //// //Mst_CampainExhibitedPOSM_CheckDB_CampainExhibitedPOSMExist
+		public const string Mst_CampainExhibitedPOSM_CheckDB_FlagActiveNotMatched = "ErrDemoLab.Mst_CampainExhibitedPOSM_CheckDB_FlagActiveNotMatched"; //// //Mst_CampainExhibitedPOSM_CheckDB_FlagActiveNotMatched
+		#endregion
+
 
 		#region // Mst_CriteriaScoreVersion:
 		public const string Mst_CriteriaScoreVersion_CheckDB_CriteriaScoreVersionNotFound = "ErrDemoLab.Mst_CriteriaScoreVersion_CheckDB_CriteriaScoreVersionNotFound"; //// //Mst_CriteriaScoreVersion_CheckDB_CriteriaScoreVersionNotFound
@@ -1071,16 +1078,16 @@ namespace Demo.Lab.Errors
 		#region // Aud_CampaignDBDtl:
 		// Aud_CampaignDBDtl_CheckDB:
 		public const string Aud_CampaignDBDtl_CheckDB_CampaignDBDtlNotFound = "ErrDemoLab.Aud_CampaignDBDtl_CheckDB_CampaignDBDtlNotFound"; //// //Aud_CampaignDBDtl_CheckDB_CampaignDBDtlNotFound
-		public const string Aud_CampaignDBDtl_CheckDB_CampaignDBDtlExist = "Aud_CampaignDBDtl_CheckDB_CampaignDBDtlExist"; //// //Aud_CampaignDBDtl_CheckDB_CampaignDBDtlExist
-		public const string Aud_CampaignDBDtl_CheckDB_DBStatusNotMatched = "Aud_CampaignDBDtl_CheckDB_DBStatusNotMatched"; //// //Aud_CampaignDBDtl_CheckDB_DBStatusNotMatched
+		public const string Aud_CampaignDBDtl_CheckDB_CampaignDBDtlExist = "ErrDemoLab.Aud_CampaignDBDtl_CheckDB_CampaignDBDtlExist"; //// //Aud_CampaignDBDtl_CheckDB_CampaignDBDtlExist
+		public const string Aud_CampaignDBDtl_CheckDB_DBStatusNotMatched = "ErrDemoLab.Aud_CampaignDBDtl_CheckDB_DBStatusNotMatched"; //// //Aud_CampaignDBDtl_CheckDB_DBStatusNotMatched
 
 		#endregion
 
 		#region // Aud_CampaignDBPOSMDtl:
 		// Aud_CampaignDBPOSMDtl_CheckDB:
 		public const string Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlNotFound = "ErrDemoLab.Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlNotFound"; //// //Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlNotFound
-		public const string Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlExist = "Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlExist"; //// //Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlExist
-		public const string Aud_CampaignDBPOSMDtl_CheckDB_FlagActiveNotMatched = "Aud_CampaignDBPOSMDtl_CheckDB_FlagActiveNotMatched"; //// //Aud_CampaignDBPOSMDtl_CheckDB_FlagActiveNotMatched
+		public const string Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlExist = "ErrDemoLab.Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlExist"; //// //Aud_CampaignDBPOSMDtl_CheckDB_CampaignDBPOSMDtlExist
+		public const string Aud_CampaignDBPOSMDtl_CheckDB_FlagActiveNotMatched = "ErrDemoLab.Aud_CampaignDBPOSMDtl_CheckDB_FlagActiveNotMatched"; //// //Aud_CampaignDBPOSMDtl_CheckDB_FlagActiveNotMatched
 
 		#endregion
 
@@ -1093,6 +1100,20 @@ namespace Demo.Lab.Errors
 
 		#endregion
 
+		#region // Aud_CampaignOLDtl:
+		// Aud_CampaignOLDtl_CheckDB:
+		public const string Aud_CampaignOLDtl_CheckDB_CampaignOLDtlNotFound = "ErrDemoLab.Aud_CampaignOLDtl_CheckDB_CampaignOLDtlNotFound"; //// //Aud_CampaignOLDtl_CheckDB_CampaignOLDtlNotFound
+		public const string Aud_CampaignOLDtl_CheckDB_CampaignOLDtlExist = "ErrDemoLab.Aud_CampaignOLDtl_CheckDB_CampaignOLDtlExist"; //// //Aud_CampaignOLDtl_CheckDB_CampaignOLDtlExist
+		public const string Aud_CampaignOLDtl_CheckDB_CampaignOLStatusDtlNotMatched = "ErrDemoLab.Aud_CampaignOLDtl_CheckDB_CampaignOLStatusDtlNotMatched"; //// //Aud_CampaignOLDtl_CheckDB_CampaignOLStatusDtlNotMatched
+
+		// Aud_CampaignOLDtl_Save:
+		public const string Aud_CampaignOLDtl_Save = "ErrDemoLab.Aud_CampaignOLDtl_Save"; //// //Aud_CampaignOLDtl_Save ////
+		public const string Aud_CampaignOLDtl_Save_InvalidDBCode = "ErrDemoLab.Aud_CampaignOLDtl_Save_InvalidDBCode"; //// //Aud_CampaignOLDtl_Save_InvalidDBCode ////
+		public const string Aud_CampaignOLDtl_Save_InvalidQtyDeliver = "ErrDemoLab.Aud_CampaignOLDtl_Save_InvalidQtyDeliver"; //// //Aud_CampaignOLDtl_Save_InvalidQtyDeliver ////
+		public const string Aud_CampaignOLDtl_Save_InvalidDate = "ErrDemoLab.Aud_CampaignOLDtl_Save_InvalidDate"; //// //Aud_CampaignOLDtl_Save_InvalidDate ////
+		public const string Aud_CampaignOLDtl_InvalidCampaignStatus = "ErrDemoLab.Aud_CampaignOLDtl_InvalidCampaignStatus"; //// //Aud_CampaignOLDtl_InvalidCampaignStatus ////
+		public const string Aud_CampaignOLDtl_InvalidSysDateAfterEffDTimeStart = "ErrDemoLab.Aud_CampaignOLDtl_InvalidSysDateAfterEffDTimeStart"; //// //Aud_CampaignOLDtl_InvalidSysDateAfterEffDTimeStart ////
+		#endregion
 
 	}
 }

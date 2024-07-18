@@ -1497,5 +1497,98 @@ namespace Demo.Lab.Biz
 			}
 		}
 		#endregion
+
+		#region // Mst_CampainExhibitedPOSM:
+		public void Mst_CampainExhibitedPOSM_CheckDB(
+			ref ArrayList alParamsCoupleError
+			, object objCampaignCrCode
+			, object objSSGrpCode
+			, object objSSBrandCode
+			, object objLevelCode
+			, object objPOSMCode
+			, string strFlagExistToCheck
+			, string strFlagActiveListToCheck
+			, out DataTable dtDB_Mst_CampainExhibitedPOSM
+			)
+		{
+			// GetInfo:
+			string strSqlExec = CmUtils.StringUtils.Replace(@"
+					select top 1
+						t.*
+					from Mst_CampainExhibitedPOSM t --//[mylock]
+					where (1=1)
+						and t.CampaignCrCode = @objCampaignCrCode
+						and t.SSGrpCode = @objSSGrpCode
+						and t.SSBrandCode = @objSSBrandCode
+						and t.LevelCode = @objLevelCode
+						and t.POSMCode = @objPOSMCode
+					;
+				");
+			dtDB_Mst_CampainExhibitedPOSM = _cf.db.ExecQuery(
+				strSqlExec
+				, "@objCampaignCrCode", objCampaignCrCode
+				, "@objSSGrpCode", objSSGrpCode
+				, "@objSSBrandCode", objSSBrandCode
+				, "@objLevelCode", objLevelCode
+				, "@objPOSMCode", objPOSMCode
+				).Tables[0];
+			dtDB_Mst_CampainExhibitedPOSM.TableName = "Mst_CampainExhibitedPOSM";
+
+			// strFlagExistToCheck
+			if (strFlagExistToCheck.Length > 0)
+			{
+				if (CmUtils.StringUtils.StringEqual(strFlagExistToCheck, TConst.Flag.Active) && dtDB_Mst_CampainExhibitedPOSM.Rows.Count < 1)
+				{
+					alParamsCoupleError.AddRange(new object[]{
+						"Check.CampaignCrCode", objCampaignCrCode
+						, "Check.SSGrpCode", objSSGrpCode
+						, "Check.SSBrandCode", objSSBrandCode
+						, "Check.LevelCode", objLevelCode
+						, "Check.POSMCode", objPOSMCode
+						});
+					throw CmUtils.CMyException.Raise(
+						TError.ErrDemoLab.Mst_CampainExhibitedPOSM_CheckDB_CampainExhibitedPOSMNotFound
+						, null
+						, alParamsCoupleError.ToArray()
+						);
+				}
+				if (CmUtils.StringUtils.StringEqual(strFlagExistToCheck, TConst.Flag.Inactive) && dtDB_Mst_CampainExhibitedPOSM.Rows.Count > 0)
+				{
+					alParamsCoupleError.AddRange(new object[]{
+						"Check.CampaignCrCode", objCampaignCrCode
+						, "Check.SSGrpCode", objSSGrpCode
+						, "Check.SSBrandCode", objSSBrandCode
+						, "Check.LevelCode", objLevelCode
+						, "Check.POSMCode", objPOSMCode
+						});
+					throw CmUtils.CMyException.Raise(
+						TError.ErrDemoLab.Mst_CampainExhibitedPOSM_CheckDB_CampainExhibitedPOSMExist
+						, null
+						, alParamsCoupleError.ToArray()
+						);
+				}
+			}
+
+			// strFlagActiveListToCheck
+			if (strFlagActiveListToCheck.Length > 0 && !strFlagActiveListToCheck.Contains(Convert.ToString(dtDB_Mst_CampainExhibitedPOSM.Rows[0]["FlagActive"])))
+			{
+				alParamsCoupleError.AddRange(new object[]{
+					"Check.CampaignCrCode", objCampaignCrCode
+					, "Check.SSGrpCode", objSSGrpCode
+					, "Check.SSBrandCode", objSSBrandCode
+					, "Check.LevelCode", objLevelCode
+					, "Check.POSMCode", objPOSMCode
+					, "Check.strFlagActiveListToCheck", strFlagActiveListToCheck
+					, "DB.FlagActive", dtDB_Mst_CampainExhibitedPOSM.Rows[0]["FlagActive"]
+					});
+				throw CmUtils.CMyException.Raise(
+					TError.ErrDemoLab.Mst_CampainExhibitedPOSM_CheckDB_FlagActiveNotMatched
+					, null
+					, alParamsCoupleError.ToArray()
+					);
+			}
+		}
+		#endregion
+
 	}
 }

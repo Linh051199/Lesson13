@@ -2162,15 +2162,15 @@ namespace Demo.Lab.Biz
 		{
 			// GetInfo:
 			string strSqlExec = CmUtils.StringUtils.Replace(@"
-			select top 1
-				t.*
-			from Mst_StarShopHist t --//[mylock]
-			where (1=1)
-				and t.OLCode = @objOLCode
-				and t.SSGrpCode = @objSSGrpCode
-				and t.SSBrandCode = @objSSBrandCode
-			;
-		");
+					select top 1
+						t.*
+					from Mst_StarShopHist t --//[mylock]
+					where (1=1)
+						and t.OLCode = @objOLCode
+						and t.SSGrpCode = @objSSGrpCode
+						and t.SSBrandCode = @objSSBrandCode
+					;
+				");
 			dtDB_Mst_StarShopHist = _cf.db.ExecQuery(
 				strSqlExec
 				, "@objOLCode", objOLCode
@@ -2185,10 +2185,10 @@ namespace Demo.Lab.Biz
 				if (CmUtils.StringUtils.StringEqual(strFlagExistToCheck, TConst.Flag.Active) && dtDB_Mst_StarShopHist.Rows.Count < 1)
 				{
 					alParamsCoupleError.AddRange(new object[]{
-				"Check.OLCode", objOLCode
-				, "Check.SSGrpCode", objSSGrpCode
-				, "Check.SSBrandCode", objSSBrandCode
-				});
+						"Check.OLCode", objOLCode
+						, "Check.SSGrpCode", objSSGrpCode
+						, "Check.SSBrandCode", objSSBrandCode
+						});
 					throw CmUtils.CMyException.Raise(
 						TError.ErrDemoLab.Mst_StarShopHist_CheckDB_StarShopHistNotFound
 						, null
@@ -2198,10 +2198,10 @@ namespace Demo.Lab.Biz
 				if (CmUtils.StringUtils.StringEqual(strFlagExistToCheck, TConst.Flag.Inactive) && dtDB_Mst_StarShopHist.Rows.Count > 0)
 				{
 					alParamsCoupleError.AddRange(new object[]{
-				"Check.OLCode", objOLCode
-				, "Check.SSGrpCode", objSSGrpCode
-				, "Check.SSBrandCode", objSSBrandCode
-				});
+						"Check.OLCode", objOLCode
+						, "Check.SSGrpCode", objSSGrpCode
+						, "Check.SSBrandCode", objSSBrandCode
+						});
 					throw CmUtils.CMyException.Raise(
 						TError.ErrDemoLab.Mst_StarShopHist_CheckDB_StarShopHistExist
 						, null
@@ -2227,14 +2227,14 @@ namespace Demo.Lab.Biz
 			string strFunctionName = "Mst_StarShopHist_Create";
 			string strErrorCodeDefault = TError.ErrDemoLab.Mst_StarShopHist_Create;
 			ArrayList alParamsCoupleError = new ArrayList(new object[]{
-			"strFunctionName", strFunctionName
-			, "dtimeSys", dtimeSys.ToString("yyyy-MM-dd HH:mm:ss")
-			////
-			, "objOLCode", objOLCode
-			, "objSSGrpCode", objSSGrpCode
-			, "objSSBrandCode", objSSBrandCode
-			, "objEffDateStart", objEffDateStart
-			});
+					"strFunctionName", strFunctionName
+					, "dtimeSys", dtimeSys.ToString("yyyy-MM-dd HH:mm:ss")
+					////
+					, "objOLCode", objOLCode
+					, "objSSGrpCode", objSSGrpCode
+					, "objSSBrandCode", objSSBrandCode
+					, "objEffDateStart", objEffDateStart
+					});
 			#endregion
 
 			try
@@ -2313,8 +2313,8 @@ namespace Demo.Lab.Biz
 					if (strEffDateStart == null || strEffDateStart.Length < 1)
 					{
 						alParamsCoupleError.AddRange(new object[]{
-					"Check.strEffDateStart", strEffDateStart
-					});
+							"Check.strEffDateStart", strEffDateStart
+							});
 						throw CmUtils.CMyException.Raise(
 							TError.ErrDemoLab.Mst_StarShopHist_Create_InvalidEffDateStart
 							, null
@@ -2325,9 +2325,9 @@ namespace Demo.Lab.Biz
 					if (strEffDateStart.CompareTo(dtimeSys.AddDays(1).ToString("yyyy-MM-dd")) < 0)
 					{
 						alParamsCoupleError.AddRange(new object[]{
-					"Check.strEffDateStart", strEffDateStart
-					, "Check.SysDate", DateTime.Today.ToString("yyyy-MM-dd")
-					});
+							"Check.strEffDateStart", strEffDateStart
+							, "Check.SysDate", DateTime.Today.ToString("yyyy-MM-dd")
+							});
 						throw CmUtils.CMyException.Raise(
 							TError.ErrDemoLab.Mst_StarShopHist_Create_InvalidEffDateStartAfterSysDate
 							, null
@@ -2347,15 +2347,15 @@ namespace Demo.Lab.Biz
 					if (dt_Mst_StarShopHistCheck.Rows.Count > 0)
 					{
 						alParamsCoupleError.AddRange(new object[]{
-					"Check.strEffDateStart", strEffDateStart
-					, "Check.strOLCode", strOLCode
-					, "Check.strSSGrpCode", strSSGrpCode
-					, "Check.strSSBrandCode", strSSBrandCode
-					, "Check.ExistEffDateStart", dt_Mst_StarShopHistCheck.Rows[0]["EffDateStart"]
-					, "Check.ExistOLCode", dt_Mst_StarShopHistCheck.Rows[0]["OLCode"]
-					, "Check.ExistSSGrpCode", dt_Mst_StarShopHistCheck.Rows[0]["SSGrpCode"]
-					, "Check.ExistSSBrandCode", dt_Mst_StarShopHistCheck.Rows[0]["SSBrandCode"]
-					});
+							"Check.strEffDateStart", strEffDateStart
+							, "Check.strOLCode", strOLCode
+							, "Check.strSSGrpCode", strSSGrpCode
+							, "Check.strSSBrandCode", strSSBrandCode
+							, "Check.ExistEffDateStart", dt_Mst_StarShopHistCheck.Rows[0]["EffDateStart"]
+							, "Check.ExistOLCode", dt_Mst_StarShopHistCheck.Rows[0]["OLCode"]
+							, "Check.ExistSSGrpCode", dt_Mst_StarShopHistCheck.Rows[0]["SSGrpCode"]
+							, "Check.ExistSSBrandCode", dt_Mst_StarShopHistCheck.Rows[0]["SSBrandCode"]
+							});
 						throw CmUtils.CMyException.Raise(
 							TError.ErrDemoLab.Mst_StarShopHist_Create_InvalidExistEffDateStart
 							, null

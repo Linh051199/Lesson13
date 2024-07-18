@@ -354,12 +354,12 @@ namespace ZTest01
 
 				dt_Mst_StarShopHist.Rows.Add(
 					"OLVN001.1",
-					"1",
-					"1",
+					"2",
+					"2",
 					"2024-07-12"
 			
 					);
-				dt_Mst_StarShopHist.Rows.Add(
+				/*dt_Mst_StarShopHist.Rows.Add(
 					"OLVN001.10",
 					"4",
 					"2",
@@ -421,7 +421,7 @@ namespace ZTest01
 					"2",
 					"2024-07-12"
 			
-					);
+					);*/
 
 				foreach (DataRow row in dt_Mst_StarShopHist.Rows)
 				{
@@ -670,7 +670,7 @@ namespace ZTest01
 			{
 				////
 				object objFlagIsDelete = "0";
-				object objCampaignCode = "AC20220912.333666"; 
+				object objCampaignCode = "AC20220912.666333"; 
 				object objCampaignName = "1000OL";
 				object objEffDTimeStart = "2025-06-25";
 				object objEffDTimeEnd = "2030-07-08";
@@ -698,35 +698,35 @@ namespace ZTest01
 				dtData_Aud_CampaignDBPOSMDtl.Columns.Add("QtyDeliver", typeof(object));
 
 				////
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "GB", "1000"); 
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "HT", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "KB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "GH", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "TT", "1000");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "GB", "10"); 
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "HT", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "KB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "GH", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN001", "TT", "10");
 				// //
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "GB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "HT", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "KB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "GH", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "TT", "1000");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "GB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "HT", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "KB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "GH", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN002", "TT", "10");
 				// //
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "GB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "HT", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "KB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "GH", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "TT", "1000");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "GB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "HT", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "KB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "GH", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN003", "TT", "10");
 				// //
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "GB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "HT", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "KB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "GH", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "TT", "1000");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "GB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "HT", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "KB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "GH", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN004", "TT", "10");
 				// //
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "GB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "HT", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "KB", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "GH", "1000");
-				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "TT", "1000");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "GB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "HT", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "KB", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "GH", "10");
+				dtData_Aud_CampaignDBPOSMDtl.Rows.Add("DBVN005", "TT", "10");
 				////
 
 				dsData.Tables.Add(dtData_Aud_CampaignDoc);
@@ -772,7 +772,7 @@ namespace ZTest01
 			if (bTest)
 			{
 				////
-				object objCampaignCode = "AC20220912.333666"; 
+				object objCampaignCode = "AC20220912.666333"; 
 				object objRemark = "LinhPham";
 
 				 
@@ -1129,8 +1129,6 @@ namespace ZTest01
 			#region // Mst_CampainCriteriaScope_Get:
 			if (bTest)
 			{
-
-
 				string strFt_WhereClause = "Mst_CampainCriteriaScope.CampaignCrCode = '20140623.153829' and Mst_CampainCriteriaScope.SSGrpCode = '1' and Mst_CampainCriteriaScope.SSBrandCode = '1' and Mst_CampainCriteriaScope.LevelCode = '11'";
 				mdsResult = CmUtils.ConvertUtils.Array2DataSet(ws.Mst_CampainCriteriaScope_Get(
 					strGwUserCode // strGwUserCode	
@@ -1166,8 +1164,6 @@ namespace ZTest01
 			#region // Aud_Campaign_Get:
 			if (bTest)
 			{
-
-
 				string strFt_WhereClause = "Aud_Campaign.CampaignCode = 'AC20220912.888888' and Mst_Distributor.DBCode = 'DBVN001' and Aud_Campaign.EffDTimeStart <= '2014-06-25 23:59:59' and Aud_Campaign.EffDTimeStart >= '2014-06-25 00:00:00' and Mst_Distributor.AreaCode = 'VN001' and Aud_Campaign.CampaignStatus = 'CANCEL'";
 
 				mdsResult = CmUtils.ConvertUtils.Array2DataSet(ws.Aud_Campaign_Get(
@@ -1224,8 +1220,8 @@ namespace ZTest01
 				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN003.10", "11");
 				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN004.1", "11");
 				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN004.10", "11");
-				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN005.1", "11");
-				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN005.10", "11");
+				/*dtData_Aud_CampaignOLDtl.Rows.Add("OLVN005.1", "11");
+				dtData_Aud_CampaignOLDtl.Rows.Add("OLVN005.10", "11");*/
 				// //
 
 				dsData.Tables.Add(dtData_Aud_CampaignOLDtl);
@@ -1255,9 +1251,6 @@ namespace ZTest01
 				System.Threading.Thread.Sleep(10);
 			}
 			#endregion
-
-
-
 			////
 			Thread.Sleep(10);
 			////
